@@ -1,0 +1,17 @@
+<%- include("../include/header.ejs") %> <%- include("../include/nav.ejs") %>
+
+
+<main class="delete__page">
+
+  <form action="/delete-user/<%= userId %>" method="post" class="delete__user__form">
+    <h2 class="confirm__msg">This account will be deleted and can't be restored?</h2>
+    <div class="btns__actions">
+      <button class="btn delete">Confirm</button>
+      <a class="cancel__deletion btn" href="/profile/<%= userId %>">Cancel</a>
+    </div>
+  </form>
+
+</main>
+
+
+<%- include("../include/footer.ejs") %>

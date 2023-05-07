@@ -1,0 +1,55 @@
+<%- include("../include/header.ejs") %> <%- include("../include/nav.ejs") %>
+
+
+<main>
+
+  <% if(errorMsg) { %>
+    <h5 class="error__msg"> <i class="fa-solid fa-circle-exclamation"></i> <%= errorMsg %> </h5>
+  <% } %>
+
+  <form action="/reset/<%= resetToken %>" method="post" class="auth">
+
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" required name="password" id="password">
+      <ul class="password__validator">
+        <li>At least 8 characters <i class="fa-solid fa-circle-info"></i> <i class="fa-regular fa-circle-check checked"></i></li>
+        <li>At least one digit <i class="fa-solid fa-circle-info"></i> <i class="fa-regular fa-circle-check checked"></i></li>
+        <li>At least one capital letter <i class="fa-solid fa-circle-info"></i> <i class="fa-regular fa-circle-check checked"></i></li>
+        <li>At least one small letter <i class="fa-solid fa-circle-info"></i> <i class="fa-regular fa-circle-check checked"></i></li>
+        <li>At least one special character <i class="fa-solid fa-circle-info"></i> <i class="fa-regular fa-circle-check checked"></i></li>
+      </ul>
+    </div>
+
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" required name="confirmPassword" id="confirmPassword">
+    </div>
+
+    <button type="submit">Reset password</button>
+  </form>
+
+</main>
+
+<script>
+  const validatePassword = () => {
+  const lis = document.querySelectorAll(".auth .password__validator li");
+
+  password.addEventListener("input", (e) => {
+    const value = e.currentTarget.value;
+
+    lis[0].classList.toggle("correct", value.length >= 8);
+
+    lis[1].classList.toggle("correct", /\d/.test(value));
+
+    lis[2].classList.toggle("correct", /[A-Z]/.test(value));
+
+    lis[3].classList.toggle("correct", /[a-z]/.test(value));
+
+    lis[4].classList.toggle("correct", /[^a-zA-Z0-9]/.test(value));
+  })
+}
+
+  validatePassword();
+</script>
+<%- include("../include/footer.ejs") %>

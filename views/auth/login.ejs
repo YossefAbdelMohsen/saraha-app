@@ -1,0 +1,31 @@
+<%- include("../include/header.ejs") %> <%- include("../include/nav.ejs") %>
+
+
+<main class="login__page auth__page">
+
+  <% if(errorMsg) { %>
+    <h5 class="error__msg"> <i class="fa-solid fa-circle-exclamation"></i> <%= errorMsg %> </h5>
+  <% } %>
+
+  <form action="/login" method="post" class="auth">
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" required name="email" id="email">
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" required name="password" id="password">
+    </div>
+
+    <div class="reset">
+      <a href="/reset">Reset password?</a>
+    </div>
+
+    <button type="submit">Login</button>
+  </form>
+
+</main>
+
+
+<%- include("../include/footer.ejs") %>

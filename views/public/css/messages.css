@@ -1,0 +1,96 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
+.user__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile__img {
+  width: 90px;
+  height: 90px;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+main .inbox__messages {
+  width: 100%;
+}
+
+.message {
+  background-color: #f5f7f7;
+  border-radius: 4px;
+  outline: 3px solid #2ec4b582;
+  margin: auto;
+  margin-bottom: 15px;
+  padding: 20px;
+  position: relative;
+  width: 550px;
+  text-align: center;
+  z-index: 0;
+}
+
+
+
+@media (max-width: 780px) {
+  .message {
+    width: 95%;
+  }
+}
+
+.msg__date {
+  color: #989898;
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: calc(15px / 2);
+  left: 20px;
+}
+
+.message p {
+  word-wrap: break-word;
+  overflow: hidden;
+  width: 100%;
+  padding: 1rem;
+  padding-bottom: 2rem;
+  position: relative;
+}
+
+.delete__msg {
+  position: absolute;
+  right: 10px;
+  bottom: calc(25px / 2);
+  z-index: 999;
+}
+
+.delete__msg a {
+  font-size: 0.8rem;
+  background-color: #ef233c;
+  border: 2px solid #ef233c;
+  color: white;
+  padding: 3px 4px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: outline 0.3s;
+  outline: 3px solid transparent;
+}
+
+.delete__msg a:hover {
+  outline: 3px solid #ef233b8b;
+}
+
+
+.no__msgs__info {
+  margin: auto;
+  margin-top: 30px;
+  width: fit-content;
+  color: #666666;
+}

@@ -1,0 +1,37 @@
+<%- include("../include/header.ejs") %> <%- include("../include/nav.ejs") %>
+
+  <main>
+
+    <% if(errorMsg) { %>
+      <h5 class="error__msg"> <i class="fa-solid fa-circle-exclamation"></i> <%= errorMsg %> </h5>
+    <% } %>
+
+    <div class="profile__img">
+      <img src="<%= user.profileImg %>" alt="">
+    </div>
+
+    <h3><%= user.username %></h3>
+
+    <form action="/send/<%= user._id %>" method="post">
+      <textarea class="text_message" placeholder="Send Message to <%= user.username %>..." name="message" cols="30" rows="10"></textarea>
+      <span class="char__counter">0 / 200</span>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </main>
+
+
+<script>
+  const textBox = document.querySelector(".text_message");
+  const counter = document.querySelector(".char__counter");
+  textBox.oninput = (e) => {
+    if(e.currentTarget.value.length > 200) {
+      counter.textContent = "200 / 200";
+      textBox.value = textBox.value.slice(0, 200);
+      return e.preventDefault();
+    } else {
+      counter.textContent = e.currentTarget.value.length + " / 200";
+    }
+    
+  }
+</script>
+<%- include("../include/footer.ejs") %>

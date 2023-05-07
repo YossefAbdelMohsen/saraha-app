@@ -1,0 +1,34 @@
+<%- include("../include/header.ejs") %> <%- include("../include/nav.ejs") %>
+
+<main>
+  <div class="user__info">
+    <div class="profile__img">
+      <img src="<%= user.profileImg %>" alt="">
+    </div>
+    <h3><%= user.username %></h3>
+  </div>
+  <br>
+  <h2>Your messages:</h2>
+  <div class="inbox__messages">
+    <% if(!messages) { %>
+      <h3 class="no__msgs__info">There are no messages, share your link between friends!</h3>
+    <% } %>
+    <% if(messages) { %>
+      <% for(let message of messages) { %>
+        <div class="message">
+          <span class="delete__msg">
+            <a href="/delete-message/<%= message._id %>"><i class="fa-regular fa-trash-can"></i> Delete</a>
+          </span>
+          <span class="msg__date">
+            <%= message.sentAt.toLocaleString() %>
+          </span>
+          <p class="msg">
+            <%= message.text %>
+          </p>
+        </div>
+      <% } %>
+    <% } %>
+  </div>
+</main>
+
+<%- include("../include/footer.ejs") %>

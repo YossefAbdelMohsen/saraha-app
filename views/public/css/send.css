@@ -1,0 +1,74 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profiel__img {
+  width: 80px;
+  height: 80px;
+}
+
+.profiel__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+textarea {
+  border: 2px solid #24bfaf;
+  transition: outline 0.3s, opacity 0.3s;
+  width: 350px;
+  height: 210px;
+  max-width: 350px;
+  resize: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+
+
+textarea:focus {
+  outline: 4px solid #24bfaf66;
+}
+
+.char__counter {
+  margin: 5px 0 10px;
+  width: 100%;
+  padding: 0.2rem 0;
+  text-align: center;
+  border: 2px solid #94b8b4;
+  font-weight: 500;
+  border-radius: 4px;
+  width: 350px;
+}
+
+button {
+  width: 350px;
+}
+
+@media(max-width: 767px) {
+  nav {
+    height: 48px;
+  }
+
+  textarea {
+    height: 180px;
+  }
+
+  textarea,
+  button,
+  .char__counter {
+    width: 320px;
+  }
+}

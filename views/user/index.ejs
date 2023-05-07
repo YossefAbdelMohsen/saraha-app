@@ -1,0 +1,80 @@
+<%- include("../include/header.ejs") %> <%- include("../include/nav.ejs") %>
+
+<main class="user__page">
+  <img src="" alt="">
+
+  <div class="main__page">
+    <% if(isAuthed) { %>
+      <div class="profile__img">
+        <img src="<%= user.profileImg %>" alt="">
+      </div>
+      <h1>Hello <%= user.username %>!</h1>
+      <h2>Share your link to have messages:</h2>
+      <input type="text" name="rec__link" value="<%= link %>"/>
+      <h4 class="text__copied"><i class="fa-regular fa-circle-check"></i> Text Copied!</h4>
+      <div class="btns">
+        <button class="btn copyLink"> <i class="fa-regular fa-clipboard"></i> Copy link </button>
+        <a href="/messages/<%= user._id %>" class="btn copyLink"> <i class="fa-solid fa-inbox"></i> Messages </a>
+      </div>
+      <div class="spocial__share">
+        <a href="" class="facebook" target="_blank">
+          <i class="fa-brands fa-facebook fa-2xl"></i>
+        </a>
+        <a href="" class="twitter" target="_blank">
+          <i class="fa-brands fa-twitter fa-2xl"></i>
+        </a>
+        <a href="" class="whatsapp" target="_blank">
+          <i class="fa-brands fa-whatsapp fa-2xl"></i>
+        </a>
+      </div>
+    <% } %>
+  
+    <% if(!isAuthed) { %>
+      <h1> Welcome to Saraha!</h1>
+  
+      <div class="btns">
+        <a href="/login" class="btn">Login</a>
+        <a href="/signup" class="btn">Signup</a>
+      </div>
+    <% } %>
+  </div>
+</main>
+
+
+<script>
+  const input = document.querySelector("[name='rec__link']");
+  const copyLink = () => {
+    const copyLinkBtn = document.querySelector(".copyLink");
+    if(!copyLinkBtn) {
+      return;
+    }
+
+    copyLinkBtn.onclick = () => {
+      input.select();
+
+      document.execCommand("copy");
+
+      document.querySelector(".text__copied").style = "display: block";
+    }
+  }
+  copyLink();
+
+
+  // Share Btns
+  const text = `صارحني برسائلك الخاصة`;
+  const twitterShare = document.querySelector(".twitter");
+  const facebookShare = document.querySelector(".facebook");
+  const whatsappShare = document.querySelector(".whatsapp");
+  const link = input.value;
+
+  console.log(link)
+
+  twitterShare.href = `https://twitter.com/share?&url=${link}&text=${text}`;
+  facebookShare.href = `https://facebook.com/share.php?u=${link}`;
+  const fullText = `${text}:-  \n${link}`;
+
+  whatsappShare.href = `https://wa.me/?text=${fullText}`;
+
+</script>
+
+<%- include("../include/footer.ejs") %>

@@ -1,0 +1,58 @@
+.user__page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px);
+  gap: 15px;
+  text-align: center;
+}
+
+.user__page .main__page {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user__page .main__page .profile__img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+[name='rec__link'] {
+  position: absolute;
+  z-index: -555;
+  opacity: 0;
+}
+
+.text__copied {
+  color: white;
+  background-color: #eaf0e8;
+  border: 2px solid #55a630;
+  color: #55a630;
+  border-radius: 4px;
+  padding: 5px 15px;
+  display: none;
+}
+
+.spocial__share {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+}
+
+.spocial__share a {
+  color: #959595;
+  transition: color 0.3s;
+}
+
+.spocial__share a:hover {
+  color: #2ec4b6;
+}

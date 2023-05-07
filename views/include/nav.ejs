@@ -1,0 +1,47 @@
+  <header>
+    <nav>
+      <h3 class="logo"><a href="/">
+        <i class="logo__icon fa-regular fa-envelope fa-xl"></i> Saraha
+      </a></h3>
+      
+      <div class="lists">
+        <div class="close">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+
+        <ul class="messages">
+          <% if(isAuthed) { %>
+            <li><a href="/messages/<%= userId %>" class="<%= path === "/messages" ? "active" : "" %>">
+              <i class="fa-solid fa-inbox"></i> Messages
+            </a></li>
+          <% } %>
+        </ul>
+  
+        <ul>
+
+          <% if(!isAuthed) { %>
+            <li><a href="/login" class="<%= path === "/login" ? "active" : "" %>">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+            </a></li>
+            <li><a href="/signup" class="<%= path === "/signup" ? "active" : "" %>">
+              <i class="fa-solid fa-user-plus"></i> Signup
+            </a></li>
+          <% } %>
+
+          <% if(isAuthed) { %>
+            <li><a href="/profile/<%= userId %>" class="<%= path === "/profile" ? "active" : "" %>">
+              <i class="fa-solid fa-user"></i> Profile
+            </a></li>
+            <li><a href="/logout">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+            </a></li>
+          <% } %>
+
+        </ul>
+      </div>
+
+      <div class="menu">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </nav>
+  </header>

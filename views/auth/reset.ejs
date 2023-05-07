@@ -1,0 +1,35 @@
+<%- include("../include/header.ejs") %> <%- include("../include/nav.ejs") %>
+
+  <main>
+
+    <% if(POST) { %>
+      <h3 class="info__msg">Check the inbox in your email: <%= the__email %></h3>
+    <% } %>
+
+    <% if(POST === false) { %>
+      <% if(errorMsg) { %>
+        <h5 class="error__msg"> <i class="fa-solid fa-circle-exclamation"></i> <%= errorMsg %> </h5>
+      <% } %>
+  
+      <form action="/reset" method="post" class="auth">
+        <div>
+          <label for="email">Email:</label>
+  
+          <% if(the__email) { %>
+            <input type="email" required name="email" value="<%= the__email %>" id="email">
+          <% } %>
+  
+          <% if(!the__email) { %>
+            <input type="email" required name="email" id="email">
+          <% } %>
+  
+        </div>
+  
+        <button class="btn">Reset password</button>
+      </form>
+    <% } %>
+
+    
+  </main>
+
+<%- include("../include/footer.ejs") %>

@@ -1,0 +1,48 @@
+<%- include("../include/header.ejs") %> <%- include("../include/nav.ejs") %>
+
+
+<main class="profile">
+
+  <% if(errorMsg) { %>
+    <h5 class="error__msg"> <i class="fa-solid fa-circle-exclamation"></i> <%= errorMsg %> </h5>
+  <% } %>
+
+  
+    
+  
+  <form action="/profile/<%= user._id %>" method="post" class="auth" autocomplete="off" enctype="multipart/form-data">
+    
+    <div class="image__container">
+      <div class="profile__img">
+        <img src="<%= user.profileImg %>" alt="">
+      </div>
+      <span class="upload__icon">
+        <i class="fa-solid fa-upload"></i>
+        <input class="img__uploader" type="file" name="avatar">
+      </span>
+    </div>
+
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" required name="username" id="username" value="<%= user.username %>">
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" required name="email" disabled id="email" value="<%= user.email %>">
+    </div>
+
+    <div class="reset">
+      <a href="/reset">Reset password?</a>
+    </div>
+
+    <button type="submit">Update profile</button>
+    <div class="delete__user">
+      <a class="btn delete" href="/delete-user/<%= user._id %>"> Delete User </a>
+    </div>
+  </form>
+
+</main>
+
+
+<%- include("../include/footer.ejs") %>
